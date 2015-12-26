@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="16" tileheight="16" nextobjectid="6">
+ <tileset firstgid="1" name="HeatManBlocks-Tileset" tilewidth="16" tileheight="16" tilecount="32">
+  <image source="HeatManBlocks-Tileset.png" width="64" height="128"/>
+  <tile id="24">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="25">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="28">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+  <tile id="29">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="33" name="block-spawn" tilewidth="16" tileheight="16" tilecount="1">
+  <image source="block-spawn.png" width="16" height="16"/>
+  <tile id="0">
+   <properties>
+    <property name="spawn" value="AppearingBlock"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Ground" width="16" height="14">
+  <data encoding="base64">
+   HgAAAB4AAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAHgAAAB4AAAAeAAAAHgAAAB0AAAAdAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAB0AAAAdAAAAHQAAAB0AAAAaAAAAGgAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAAUAAAAFAAAABQAAAB4AAAAeAAAAHQAAAB0AAAAWAAAAFgAAAAkAAAAJAAAACQAAAAkAAAAJAAAACQAAAAkAAAAJAAAACQAAAAkAAAAeAAAAHgAAABoAAAAaAAAAGgAAABoAAAANAAAADQAAAA0AAAANAAAADQAAAA0AAAANAAAADQAAAA0AAAANAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAAEQAAABEAAAARAAAAEQAAABEAAAARAAAAEQAAABEAAAARAAAAEQAAAB4AAAAeAAAAHgAAAB4AAAAeAAAAHgAAABEAAAARAAAAEQAAABEAAAARAAAAEQAAABEAAAARAAAAEQAAABEAAAAeAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAARAAAAEQAAABEAAAARAAAAEQAAABEAAAARAAAAEQAAABEAAAARAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAAAgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAAHgAAAAYAAAAVAAAABgAAAAYAAAAVAAAABgAAAAYAAAAVAAAABgAAABUAAAAeAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAKAAAAGQAAAAoAAAAKAAAAGQAAAAoAAAAKAAAAGQAAAAoAAAAZAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAADgAAAA4AAAAOAAAADgAAAA4AAAAOAAAADgAAAA4AAAAOAAAADgAAAB4AAAAeAAAAHgAAAB4AAAAeAAAAHgAAABIAAAASAAAAEgAAABIAAAASAAAAEgAAABIAAAASAAAAEgAAABIAAAAeAAAAHgAAAB4AAAAeAAAAHgAAAB4AAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAGgAAABoAAAAaAAAAHgAAAB4AAAA=
+  </data>
+ </layer>
+ <objectgroup name="Blocks1">
+  <properties>
+   <property name="unity:tag" value="AppearingBlocks1"/>
+  </properties>
+  <object id="1" gid="33" x="160" y="128" width="16" height="16">
+   <properties>
+    <property name="Tint" value="255,255,0"/>
+   </properties>
+  </object>
+  <object id="2" gid="33" x="96" y="64" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="Blocks2">
+  <properties>
+   <property name="unity:tag" value="AppearingBlocks2"/>
+  </properties>
+  <object id="3" gid="33" x="160" y="80" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup name="Blocks3">
+  <properties>
+   <property name="unity:tag" value="AppearingBlocks3"/>
+  </properties>
+  <object id="4" gid="33" x="112" y="96" width="16" height="16"/>
+ </objectgroup>
+</map>

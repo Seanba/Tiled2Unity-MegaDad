@@ -1,0 +1,169 @@
+fileFormatVersion: 2
+guid: 034aac938519403409289e0e6199b8cf
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: megadad2014_0
+    21300002: megadad2014_1
+    21300004: megadad2014_2
+    21300006: megadad2014_3
+    21300008: megadad2014_4
+    21300010: megadad2014_5
+    21300012: megadad2014_6
+    21300014: megadad2014_7
+    21300016: megadad2014_8
+    21300018: megadad2014_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 1
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: megadad2014_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 36
+        width: 21
+        height: 24
+      alignment: 9
+      pivot: {x: .571428597, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 36
+        width: 21
+        height: 24
+      alignment: 9
+      pivot: {x: .571428597, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_2
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 26
+        height: 29
+      alignment: 9
+      pivot: {x: .538461566, y: .586206913}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_3
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 2
+        width: 24
+        height: 22
+      alignment: 9
+      pivot: {x: .583333313, y: .545454562}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_4
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 2
+        width: 19
+        height: 24
+      alignment: 9
+      pivot: {x: .631578922, y: .507302344}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_5
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 2
+        width: 22
+        height: 22
+      alignment: 9
+      pivot: {x: .681818187, y: .545454562}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_6
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 34
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_7
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 34
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_8
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 35
+        width: 16
+        height: 22
+      alignment: 9
+      pivot: {x: .5, y: .363636374}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: megadad2014_9
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 35
+        width: 16
+        height: 22
+      alignment: 9
+      pivot: {x: .5, y: .363636374}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

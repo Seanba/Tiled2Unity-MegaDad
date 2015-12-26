@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="15" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="flashman-tiles" tilewidth="16" tileheight="16" tilecount="28">
+  <image source="flashman-tiles.png" width="112" height="64"/>
+  <tile id="6">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="29" name="animated-tiles" tilewidth="16" tileheight="16" tilecount="21">
+  <image source="animated-tiles.png" width="112" height="48"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="0" duration="550"/>
+    <frame tileid="0" duration="550"/>
+    <frame tileid="7" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="1">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="1" duration="550"/>
+    <frame tileid="1" duration="550"/>
+    <frame tileid="8" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="2">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="2" duration="550"/>
+    <frame tileid="2" duration="550"/>
+    <frame tileid="9" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="3">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="3" duration="550"/>
+    <frame tileid="3" duration="550"/>
+    <frame tileid="10" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="4">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="4" duration="550"/>
+    <frame tileid="4" duration="550"/>
+    <frame tileid="5" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="5">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="5" duration="550"/>
+    <frame tileid="4" duration="550"/>
+    <frame tileid="4" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="6">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="4" duration="550"/>
+    <frame tileid="5" duration="550"/>
+    <frame tileid="4" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="7">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="7" duration="550"/>
+    <frame tileid="0" duration="550"/>
+    <frame tileid="0" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="8">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="8" duration="550"/>
+    <frame tileid="1" duration="550"/>
+    <frame tileid="1" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="9">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="9" duration="550"/>
+    <frame tileid="2" duration="550"/>
+    <frame tileid="2" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="10">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="10" duration="550"/>
+    <frame tileid="3" duration="550"/>
+    <frame tileid="3" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="11">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="11" duration="550"/>
+    <frame tileid="11" duration="550"/>
+    <frame tileid="12" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="12">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="12" duration="550"/>
+    <frame tileid="11" duration="550"/>
+    <frame tileid="11" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="13">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="11" duration="550"/>
+    <frame tileid="12" duration="550"/>
+    <frame tileid="11" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="14">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="0" duration="550"/>
+    <frame tileid="7" duration="550"/>
+    <frame tileid="0" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="15">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="1" duration="550"/>
+    <frame tileid="8" duration="550"/>
+    <frame tileid="1" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="16">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="2" duration="550"/>
+    <frame tileid="9" duration="550"/>
+    <frame tileid="2" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="17">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="3" duration="550"/>
+    <frame tileid="10" duration="550"/>
+    <frame tileid="3" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="18">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="18" duration="550"/>
+    <frame tileid="18" duration="550"/>
+    <frame tileid="19" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="19">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="19" duration="550"/>
+    <frame tileid="18" duration="550"/>
+    <frame tileid="18" duration="550"/>
+   </animation>
+  </tile>
+  <tile id="20">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="16" height="16"/>
+   </objectgroup>
+   <animation>
+    <frame tileid="18" duration="550"/>
+    <frame tileid="19" duration="550"/>
+    <frame tileid="18" duration="550"/>
+   </animation>
+  </tile>
+ </tileset>
+ <layer name="Lair" width="16" height="15">
+  <data encoding="base64">
+   BQAAAAUAAAAFAAAACgAAAAUAAAAFAAAABQAAAAUAAAAKAAAACgAAAAUAAAAFAAAABQAAAAUAAAAFAAAACgAAACUAAAAmAAAAJwAAACsAAAArAAAAHgAAAB8AAAAgAAAAJQAAACcAAAArAAAAHQAAACUAAAAmAAAAJwAAACsAAAAhAAAAAgAAAAEAAAACAAAAAQAAAAIAAAABAAAAAgAAAAEAAAACAAAAAQAAAAIAAAABAAAAAgAAAAEAAAAhAAAALwAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAALwAAAAcAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAACIAAAAHAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAApAAAABwAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAAMAAAAAcAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAACsAAAArAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAAAkAAAAIAAAACQAAAAgAAAAdAAAAIgAAAAkAAAAIAAAACQAAAAgAAAAJAAAACAAAACUAAAAnAAAACQAAAAgAAAAJAAAACAAAACUAAAAmAAAAJwAAADAAAAAJAAAACAAAAAkAAAAIAAAAHgAAACAAAAArAAAAIQAAAAkAAAAIAAAAHgAAACAAAAAjAAAABAAAAAQAAAAdAAAACQAAAAgAAAAsAAAALgAAACQAAAADAAAAAwAAACgAAAAsAAAALgAAACQAAAAEAAAAMQAAAAsAAAAMAAAALAAAAC4AAAAkAAAAIQAAAAQAAAAEAAAAEQAAABEAAAAoAAAABAAAAAQAAAAEAAAADAAAACEAAAAlAAAAJgAAAAQAAAADAAAABAAAAC8AAAALAAAADAAAABEAAAARAAAALwAAACUAAAAmAAAAJgAAACcAAAAoAAAABAAAAAQAAAAGAAAAEQAAAAYAAAAiAAAAEgAAABMAAAARAAAAEQAAAAQAAAAEAAAABAAAAAQAAAAEAAAAKAAAAAYAAAANAAAA
+  </data>
+ </layer>
+</map>
