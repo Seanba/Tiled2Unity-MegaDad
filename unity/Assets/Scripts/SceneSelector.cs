@@ -1,4 +1,10 @@
-﻿using System;
+﻿#if UNITY_4_0 || UNITY_4_0_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+#undef T2U_USE_SCENEMANAGEMENT
+#else
+#define T2U_USE_SCENEMANAGEMENT
+#endif
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,7 +65,11 @@ class SceneSelector : MonoBehaviour
 
             if (Input.GetKeyUp(codeAlpha) || Input.GetKeyUp(codeKeypad))
             {
+#if T2U_USE_SCENEMANAGEMENT
                 UnityEngine.SceneManagement.SceneManager.LoadScene(this.scenes[i]);
+#else
+                Application.LoadLevel(this.scenes[i]);
+#endif
                 break;
             }
         }

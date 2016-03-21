@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#if !UNITY_WEBPLAYER
+// Note: This behaviour cannot be used in WebPlayer
+using System;
+
+#if UNITY_EDITOR
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
-using UnityEngine;
 using UnityEditor;
+#endif
+
+using UnityEngine;
 
 namespace Tiled2Unity
 {
@@ -16,6 +20,9 @@ namespace Tiled2Unity
     public class ImportBehaviour : MonoBehaviour
     {
         public string ImportName;
+
+        // This isn't supposed to exist outside the editor
+#if UNITY_EDITOR
         public XDocument XmlDocument { get; private set; }
 
         private int importCounter = 0;
@@ -37,7 +44,6 @@ namespace Tiled2Unity
             }
 
             // Couldn't find, so create.
-            Debug.LogFormat("Tiled2Unity import status create for file {0}", xmlPath);
             GameObject gameObject = new GameObject("__temp_tiled2unity_import");
             gameObject.transform.SetAsFirstSibling();
 
@@ -74,11 +80,14 @@ namespace Tiled2Unity
             UnityEditor.EditorUtility.ClearProgressBar();
             UnityEngine.Object.DestroyImmediate(this.gameObject);
         }
+#endif
 
+        // In case this behaviour leaks out of an import and into the runtime, complain.
         private void Update()
         {
-            Debug.LogErrorFormat("ImportBehaviour {0} left in scene after importing. Check if import was successful and remove this object from scene {1}", this.ImportName, this.gameObject.name);
+            Debug.LogError(String.Format("ImportBehaviour {0} left in scene after importing. Check if import was successful and remove this object from scene {1}", this.ImportName, this.gameObject.name));
         }
 
     }
 }
+#endif // if UNITY_WEBPLAYER

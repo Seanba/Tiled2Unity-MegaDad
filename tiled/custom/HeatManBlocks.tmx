@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="16" tileheight="16" nextobjectid="6">
- <tileset firstgid="1" name="HeatManBlocks-Tileset" tilewidth="16" tileheight="16" tilecount="32">
+ <tileset firstgid="1" name="HeatManBlocks-Tileset" tilewidth="16" tileheight="16" tilecount="32" columns="4">
   <image source="HeatManBlocks-Tileset.png" width="64" height="128"/>
   <tile id="24">
    <objectgroup draworder="index">
@@ -23,7 +23,7 @@
    </objectgroup>
   </tile>
  </tileset>
- <tileset firstgid="33" name="block-spawn" tilewidth="16" tileheight="16" tilecount="1">
+ <tileset firstgid="33" name="block-spawn" tilewidth="16" tileheight="16" tilecount="1" columns="1">
   <image source="block-spawn.png" width="16" height="16"/>
   <tile id="0">
    <properties>

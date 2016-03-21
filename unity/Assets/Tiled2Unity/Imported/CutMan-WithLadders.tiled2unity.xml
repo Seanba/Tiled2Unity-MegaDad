@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 12/25/2015 9:25:15 PM-->
-<Tiled2Unity version="1.0.0.0">
+<!--Last exported: 2/6/2016 6:58:30 PM-->
+<Tiled2Unity version="1.0.4.0">
   <AssignMaterial mesh="mesh_0001" material="CutManTileset" />
   <AssignMaterial mesh="mesh_0002" material="CutManTileset" />
   <Prefab name="CutMan-WithLadders" numTilesWide="16" numTilesHigh="14" tileWidth="16" tileHeight="16" exportScale="1" mapWidthInPixels="256" mapHeightInPixels="224">

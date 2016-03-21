@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 12/25/2015 9:22:17 PM-->
-<Tiled2Unity version="1.0.0.0">
+<!--Last exported: 2/1/2016 8:42:25 PM-->
+<Tiled2Unity version="1.0.3.0">
   <AssignMaterial mesh="mesh_0001" material="MagmaManTileset" />
   <Prefab name="MagmaManLair-WithCollision" numTilesWide="16" numTilesHigh="14" tileWidth="16" tileHeight="16" exportScale="1" mapWidthInPixels="256" mapHeightInPixels="224">
     <GameObject name="Terrain" x="0" y="0">

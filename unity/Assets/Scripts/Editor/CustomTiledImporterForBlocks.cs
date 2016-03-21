@@ -27,6 +27,14 @@ class CustomTiledImporterForBlocks : Tiled2Unity.ICustomTiledImporter
             AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject));
         if (spawn != null)
         {
+            // Remove old tile object
+            Transform oldTileObject = gameObject.transform.Find("TileObject");
+            if (oldTileObject != null)
+            {
+                GameObject.DestroyImmediate(oldTileObject.gameObject);
+            }
+
+            // Replace with new spawn object
             GameObject spawnInstance = 
                 (GameObject)GameObject.Instantiate(spawn);
             spawnInstance.name = spawn.name;

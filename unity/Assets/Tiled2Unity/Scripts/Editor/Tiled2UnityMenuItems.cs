@@ -12,6 +12,7 @@ namespace Tiled2Unity
 {
     class Tiled2UnityMenuItems
     {
+#if !UNITY_WEBPLAYER
         // Convenience function for packaging this library
         [MenuItem("Tiled2Unity/Export Tiled2Unity Library ...")]
         static void ExportLibrary()
@@ -25,6 +26,7 @@ namespace Tiled2Unity
                 AssetDatabase.ExportPackage(packageFiles.ToArray(), path);
             }
         }
+#endif
 
         // Not ready for public consumption yet. (But handy to have for development)
         //[MenuItem("Tiled2Unity/Clean Tiled2Unity Files")]

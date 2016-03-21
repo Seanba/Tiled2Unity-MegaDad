@@ -1,4 +1,7 @@
-﻿using System;
+﻿#if !UNITY_WEBPLAYER
+// Note: This parital class is not compiled in for WebPlayer builds.
+// The Unity Webplayer is deprecated. If you *must* use it then make sure Tiled2Unity assets are imported via another build target first.
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -92,13 +95,6 @@ namespace Tiled2Unity
             }
         }
 
-        public static void ApplyColliderOffset(XElement xmlCollider, Collider2D collider)
-        {
-            float x = GetAttributeAsFloat(xmlCollider, "offsetX", 0);
-            float y = GetAttributeAsFloat(xmlCollider, "offsetY", 0);
-            collider.offset += new Vector2(x, y);
-        }
-
         public static byte[] Base64ToBytes(string base64)
         {
             return Convert.FromBase64String(base64);
@@ -145,3 +141,4 @@ namespace Tiled2Unity
         //}
     }
 }
+#endif

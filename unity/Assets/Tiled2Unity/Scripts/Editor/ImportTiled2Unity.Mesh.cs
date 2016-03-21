@@ -1,4 +1,11 @@
-﻿using System;
+﻿#if UNITY_4_0 || UNITY_4_0_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+#define T2U_IS_UNITY_4
+#endif
+
+#if !UNITY_WEBPLAYER
+// Note: This parital class is not compiled in for WebPlayer builds.
+// The Unity Webplayer is deprecated. If you *must* use it then make sure Tiled2Unity assets are imported via another build target first.
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +28,7 @@ namespace Tiled2Unity
             string xmlPath = GetXmlImportAssetPath(objPath);
 
             ImportBehaviour importBehaviour = ImportBehaviour.FindOrCreateImportBehaviour(xmlPath);
-            importBehaviour.IncrementProgressBar(String.Format("Create prefab: {0}", Path.GetFileNameWithoutExtension(GetPrefabAssetPath(objPath, false))));
+            importBehaviour.IncrementProgressBar(String.Format("Create prefab: {0}", Path.GetFileNameWithoutExtension(GetPrefabAssetPath(objPath, false, null))));
 
             foreach (var xmlPrefab in importBehaviour.XmlDocument.Root.Elements("Prefab"))
             {
@@ -53,8 +60,9 @@ namespace Tiled2Unity
             tempPrefab.transform.localScale = new Vector3(prefabScale, prefabScale, prefabScale);
 
             // Part 4: Save the prefab, keeping references intact.
-            bool isResource = ImportUtils.GetAttributeAsBoolean(xmlPrefab, "resource", false);
-            string prefabPath = GetPrefabAssetPath(prefabName, isResource);
+            string resourcePath = ImportUtils.GetAttributeAsString(xmlPrefab, "resourcePath", "");
+            bool isResource = !String.IsNullOrEmpty(resourcePath) || ImportUtils.GetAttributeAsBoolean(xmlPrefab, "resource", false);
+            string prefabPath = GetPrefabAssetPath(prefabName, isResource, resourcePath);
             UnityEngine.Object finalPrefab = AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject));
 
             if (finalPrefab == null)
@@ -241,9 +249,21 @@ namespace Tiled2Unity
                 float width = ImportUtils.GetAttributeAsFloat(xmlBoxCollider2D, "width");
                 float height = ImportUtils.GetAttributeAsFloat(xmlBoxCollider2D, "height");
                 collider.size = new Vector2(width, height);
-                collider.offset = new Vector2(width * 0.5f, -height * 0.5f);
 
-                ImportUtils.ApplyColliderOffset(xmlBoxCollider2D, collider);
+#if T2U_IS_UNITY_4
+                collider.center = new Vector2(width * 0.5f, -height * 0.5f);
+#else
+                collider.offset = new Vector2(width * 0.5f, -height * 0.5f);
+#endif
+                // Apply the offsets (if any)
+                float offset_x = ImportUtils.GetAttributeAsFloat(xmlBoxCollider2D, "offsetX", 0);
+                float offset_y = ImportUtils.GetAttributeAsFloat(xmlBoxCollider2D, "offsetY", 0);
+
+#if T2U_IS_UNITY_4
+                collider.center += new Vector2(offset_x, offset_y);
+#else
+                collider.offset += new Vector2(offset_x, offset_y);
+#endif
             }
 
             // Circle colliders
@@ -253,9 +273,21 @@ namespace Tiled2Unity
                 collider.isTrigger = isTrigger;
                 float radius = ImportUtils.GetAttributeAsFloat(xmlCircleCollider2D, "radius");
                 collider.radius = radius;
+#if T2U_IS_UNITY_4
+                collider.center = new Vector2(radius, -radius);
+#else
                 collider.offset = new Vector2(radius, -radius);
+#endif
 
-                ImportUtils.ApplyColliderOffset(xmlCircleCollider2D, collider);
+                // Apply the offsets (if any)
+                float offset_x = ImportUtils.GetAttributeAsFloat(xmlCircleCollider2D, "offsetX", 0);
+                float offset_y = ImportUtils.GetAttributeAsFloat(xmlCircleCollider2D, "offsetY", 0);
+
+#if T2U_IS_UNITY_4
+                collider.center += new Vector2(offset_x, offset_y);
+#else
+                collider.offset += new Vector2(offset_x, offset_y);
+#endif
             }
 
             // Edge colliders
@@ -274,7 +306,19 @@ namespace Tiled2Unity
 
                 collider.points = points.ToArray();
 
-                ImportUtils.ApplyColliderOffset(xmlEdgeCollider2D, collider);
+                // Apply the offsets (if any)
+                float offset_x = ImportUtils.GetAttributeAsFloat(xmlEdgeCollider2D, "offsetX", 0);
+                float offset_y = ImportUtils.GetAttributeAsFloat(xmlEdgeCollider2D, "offsetY", 0);
+
+#if T2U_IS_UNITY_4
+                // This is kind of a hack for Unity 4.x which doesn't support offset/center on the edge collider
+                var offsetPoints = from pt in points
+                                   select new Vector2(pt.x + offset_x, pt.y + offset_y);
+                collider.points = offsetPoints.ToArray();
+
+#else
+                collider.offset += new Vector2(offset_x, offset_y);
+#endif
             }
 
             // Polygon colliders
@@ -282,6 +326,10 @@ namespace Tiled2Unity
             {
                 PolygonCollider2D collider = gameObject.AddComponent<PolygonCollider2D>();
                 collider.isTrigger = isTrigger;
+
+                // Apply the offsets (if any)
+                float offset_x = ImportUtils.GetAttributeAsFloat(xmlPolygonCollider2D, "offsetX", 0);
+                float offset_y = ImportUtils.GetAttributeAsFloat(xmlPolygonCollider2D, "offsetY", 0);
 
                 var paths = xmlPolygonCollider2D.Elements("Path").ToArray();
                 collider.pathCount = paths.Count();
@@ -295,12 +343,19 @@ namespace Tiled2Unity
                     var points = from pt in data.Split(' ')
                                  let x = Convert.ToSingle(pt.Split(',')[0])
                                  let y = Convert.ToSingle(pt.Split(',')[1])
+#if T2U_IS_UNITY_4
+                                 // Hack for Unity 4.x
+                                 select new Vector2(x + offset_x, y + offset_y);
+#else
                                  select new Vector2(x, y);
+#endif
 
                     collider.SetPath(p, points.ToArray());
                 }
 
-                ImportUtils.ApplyColliderOffset(xmlPolygonCollider2D, collider);
+#if !T2U_IS_UNITY_4
+                collider.offset += new Vector2(offset_x, offset_y);
+#endif
             }
         }
 
@@ -397,7 +452,7 @@ namespace Tiled2Unity
                              from t in a.GetTypes()
                              where typeof(ICustomTiledImporter).IsAssignableFrom(t)
                              where !t.IsAbstract
-                             where Attribute.GetCustomAttribute(t, typeof(CustomTiledImporterAttribute)) == null
+                             where System.Attribute.GetCustomAttribute(t, typeof(CustomTiledImporterAttribute)) == null
                              select t;
             foreach (var t in errorTypes)
             {
@@ -409,7 +464,7 @@ namespace Tiled2Unity
                         from t in a.GetTypes()
                         where typeof(ICustomTiledImporter).IsAssignableFrom(t)
                         where !t.IsAbstract
-                        from attr in Attribute.GetCustomAttributes(t, typeof(CustomTiledImporterAttribute))
+                        from attr in System.Attribute.GetCustomAttributes(t, typeof(CustomTiledImporterAttribute))
                         let custom = attr as CustomTiledImporterAttribute
                         orderby custom.Order
                         select t;
@@ -420,3 +475,4 @@ namespace Tiled2Unity
 
     } // end class
 } // end namespace
+#endif

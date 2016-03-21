@@ -1,4 +1,8 @@
-﻿using System;
+﻿#if UNITY_4_0 || UNITY_4_0_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+#define T2U_IS_UNITY_4
+#endif
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,10 +45,17 @@ class AppearingBlockController : MonoBehaviour
         Vector2 pos = box2d.transform.position;
         Rect rect = new Rect();
 
+#if T2U_IS_UNITY_4
+        rect.xMin = pos.x + box2d.center.x - box2d.size.x * 0.5f;
+        rect.xMax = pos.x + box2d.center.x + box2d.size.x * 0.5f;
+        rect.yMin = pos.y + box2d.center.y - box2d.size.y * 0.5f;
+        rect.yMax = pos.y + box2d.center.y + box2d.size.y * 0.5f;
+#else
         rect.xMin = pos.x + box2d.offset.x - box2d.size.x * 0.5f;
         rect.xMax = pos.x + box2d.offset.x + box2d.size.x * 0.5f;
         rect.yMin = pos.y + box2d.offset.y - box2d.size.y * 0.5f;
         rect.yMax = pos.y + box2d.offset.y + box2d.size.y * 0.5f;
+#endif
         return rect;
     }
 

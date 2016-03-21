@@ -1,4 +1,8 @@
-﻿#define DEBUG_CC2D_RAYS
+﻿#if UNITY_4_0 || UNITY_4_0_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6 || UNITY_4_7
+#define T2U_IS_UNITY_4
+#endif
+
+#define DEBUG_CC2D_RAYS
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -374,7 +378,11 @@ public class CharacterController2D : MonoBehaviour
 	private void primeRaycastOrigins()
 	{
 		var scaledColliderSize = new Vector2( boxCollider.size.x * Mathf.Abs( transform.localScale.x ), boxCollider.size.y * Mathf.Abs( transform.localScale.y ) ) / 2;
+#if T2U_IS_UNITY_4
+        var scaledCenter = new Vector2(boxCollider.center.x * transform.localScale.x, boxCollider.center.y * transform.localScale.y);
+#else
 		var scaledCenter = new Vector2( boxCollider.offset.x * transform.localScale.x, boxCollider.offset.y * transform.localScale.y );
+#endif
 
 		_raycastOrigins.topRight = transform.position + new Vector3( scaledCenter.x + scaledColliderSize.x, scaledCenter.y + scaledColliderSize.y );
 		_raycastOrigins.topRight.x -= _skinWidth;
