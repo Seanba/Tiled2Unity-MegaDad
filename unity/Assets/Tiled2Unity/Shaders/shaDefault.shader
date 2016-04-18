@@ -1,11 +1,9 @@
-﻿// Legacy shader for older Tiled2Unity builds. Will eventually remove.
-Shader "Tiled2Unity/TextureTintSnap (Legacy)"
+﻿Shader "Tiled2Unity/Default"
 {
     Properties
     {
         [PerRendererData] _MainTex ("Tiled Texture", 2D) = "white" {}
         _Color ("Tint", Color) = (1,1,1,1)
-        _AlphaColorKey ("Alpha Color Key", Color) = (0,0,0,0)
         [MaterialToggle] PixelSnap ("Pixel snap", Float) = 1
     }
 
@@ -17,7 +15,6 @@ Shader "Tiled2Unity/TextureTintSnap (Legacy)"
             "IgnoreProjector"="True" 
             "RenderType"="Transparent" 
             "PreviewType"="Plane"
-            "CanUseSpriteAtlas"="True"
         }
 
         Cull Off
@@ -70,20 +67,7 @@ Shader "Tiled2Unity/TextureTintSnap (Legacy)"
             fixed4 frag(v2f IN) : COLOR
             {
                 half4 texcol = tex2D(_MainTex, IN.texcoord);
-
-                // The alpha color key is 'enabled' if it has solid alpha
-                if (_AlphaColorKey.a == 1 &&
-                    _AlphaColorKey.r == texcol.r &&
-                    _AlphaColorKey.g == texcol.g &&
-                    _AlphaColorKey.b == texcol.b)
-                {
-                    texcol.a = 0;
-                }
-                else
-                {
-                    texcol = texcol * IN.color;
-                }
-
+                texcol = texcol * IN.color;
                 return texcol;
             }
         ENDCG

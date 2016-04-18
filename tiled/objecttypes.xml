@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objecttypes>
+ <objecttype name="Default" color="#262f26"/>
+ <objecttype name="Spikes" color="#aa007f"/>
+ <objecttype name="Ladders" color="#0000ff"/>
+</objecttypes>

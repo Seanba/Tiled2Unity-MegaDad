@@ -88,17 +88,17 @@ namespace Tiled2Unity
             return textureAsset;
         }
 
-        public string GetXmlImportAssetPath(string file)
+        public string GetXmlImportAssetPath(string name)
         {
-            string name = Path.GetFileNameWithoutExtension(file);
+#if !UNITY_WEBPLAYER
+            name = Tiled2Unity.ImportBehaviour.GetFilenameWithoutTiled2UnityExtension(name);
+#endif
             string xmlAsset = String.Format("{0}/Imported/{1}.tiled2unity.xml", this.assetPathToTiled2UnityRoot, name);
             return xmlAsset;
         }
 
         public string GetPrefabAssetPath(string name, bool isResource, string extraPath)
         {
-            name = Path.GetFileNameWithoutExtension(name);
-
             string prefabAsset = "";
             if (isResource)
             {

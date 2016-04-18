@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="15" tilewidth="16" tileheight="16" nextobjectid="16">
+ <properties>
+  <property name="SomeOtherProp" type="int" value="5"/>
+  <property name="SomeProp" value="SomeVal"/>
+ </properties>
+ <tileset firstgid="1" source="tiles-cutman.tsx"/>
+ <layer name="Ground" width="16" height="15">
+  <data encoding="csv">
+52,60,52,60,52,60,52,60,9,9,9,9,9,9,9,9,
+60,52,60,52,60,52,52,52,9,9,9,9,9,9,9,9,
+52,60,52,60,52,60,37,37,9,9,9,9,9,9,9,9,
+60,52,60,52,60,52,29,45,9,9,9,9,9,1,1,9,
+52,60,52,60,52,60,43,53,9,9,9,9,9,43,43,9,
+60,52,60,52,60,52,60,53,9,9,9,9,9,9,9,9,
+52,60,52,60,37,37,9,53,9,9,9,9,9,9,9,9,
+60,52,60,52,29,45,9,53,9,9,9,9,9,9,9,9,
+52,60,37,37,23,23,9,53,9,9,9,9,9,9,9,9,
+60,52,29,45,53,43,43,43,43,9,9,9,9,43,43,9,
+52,60,45,45,53,45,9,9,9,9,9,9,9,9,9,9,
+60,52,45,29,53,45,9,9,9,9,9,9,9,9,9,9,
+52,60,45,45,53,45,9,9,9,9,9,9,9,9,9,9,
+60,52,52,43,43,43,43,43,1,1,1,1,1,1,1,1,
+52,60,52,60,52,60,52,60,43,43,43,43,43,43,43,43
+</data>
+ </layer>
+ <objectgroup color="#ff00ff" name="ExtraColliders">
+  <object id="5" type="Default" x="256" y="0" width="28" height="240"/>
+ </objectgroup>
+</map>
