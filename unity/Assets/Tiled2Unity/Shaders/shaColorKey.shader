@@ -1,4 +1,4 @@
-﻿Shader "Tiled2Unity/Color Key"
+﻿Shader "Tiled2Unity/Default Color Key"
 {
     Properties
     {
@@ -75,7 +75,7 @@
                     _AlphaColorKey.g == texcol.g &&
                     _AlphaColorKey.b == texcol.b)
                 {
-                    texcol.a = 0;
+                    discard;
                 }
                 else
                 {

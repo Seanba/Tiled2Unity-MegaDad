@@ -62,7 +62,6 @@
             }
 
             sampler2D _MainTex;
-            float4 _AlphaColorKey;
 
             fixed4 frag(v2f IN) : COLOR
             {
