@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="16" tileheight="16" nextobjectid="6">
+<map version="1.0" tiledversion="1.0.2108" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="16" tileheight="16" nextobjectid="6">
  <tileset firstgid="1" name="HeatManBlocks-Tileset" tilewidth="16" tileheight="16" tilecount="32" columns="4">
   <image source="HeatManBlocks-Tileset.png" width="64" height="128"/>
   <tile id="24">

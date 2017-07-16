@@ -19,3 +19,7 @@ EditorBuildSettings:
     path: Assets/Scenes/slopes.unity
   - enabled: 1
     path: Assets/Scenes/water.unity
+  - enabled: 0
+    path: Assets/Scenes/object-types.unity
+  - enabled: 1
+    path: Assets/Scenes/collision-layers.unity

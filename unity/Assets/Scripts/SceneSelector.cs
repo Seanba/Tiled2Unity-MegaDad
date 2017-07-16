@@ -20,7 +20,7 @@ class SceneSelector : MonoBehaviour
 
     private void Start()
     {
-        Transform text = this.transform.FindChild("TextChildren/TextMain");
+        Transform text = this.transform.Find("TextChildren/TextMain");
         text.GetComponent<GUIText>().text = String.Format("Use numeric keys to change scene [1-{0}]", this.scenes.Count());
 
         // Create text children to surrond us but with contrasting color so it stands out

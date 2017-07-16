@@ -131,7 +131,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c, type: 2}
-  m_RootGameObject: {fileID: 1900510070}
+  m_RootGameObject: {fileID: 1496370802}
   m_IsPrefabParent: 0
 --- !u!1 &453395342
 GameObject:
@@ -162,35 +162,103 @@ Transform:
   - {fileID: 992273125}
   m_Father: {fileID: 1700727085}
   m_RootOrder: 0
---- !u!1 &763336430
+--- !u!1 &627149154
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 137750, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c, type: 2}
+  m_PrefabParentObject: {fileID: 1000011059761834, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
   m_PrefabInternal: {fileID: 141767675}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 763336431}
+  - 4: {fileID: 627149155}
+  - 33: {fileID: 627149159}
+  - 23: {fileID: 627149158}
+  - 114: {fileID: 627149157}
+  - 114: {fileID: 627149156}
   m_Layer: 0
-  m_Name: Background
+  m_Name: MagmaManTileset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &763336431
+--- !u!4 &627149155
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 454224, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c, type: 2}
+  m_PrefabParentObject: {fileID: 4000012736157956, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
   m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 763336430}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 627149154}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1719773057}
-  m_Father: {fileID: 1900510071}
+  m_Children: []
+  m_Father: {fileID: 1903048821}
   m_RootOrder: 0
+--- !u!114 &627149156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114000010003843308, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 141767675}
+  m_GameObject: {fileID: 627149154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74efee4889073914b8ae070d65688ce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialOpacity: 1
+--- !u!114 &627149157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114000012741614860, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 141767675}
+  m_GameObject: {fileID: 627149154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1874989c5e2da094ea00112c6a895694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &627149158
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23000010187000868, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 141767675}
+  m_GameObject: {fileID: 627149154}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a651050930547ba4ab78168b89eb2d65, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &627149159
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33000012693254406, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 141767675}
+  m_GameObject: {fileID: 627149154}
+  m_Mesh: {fileID: 4300000, guid: 344633869b0c5364086eb054f2f5d7e1, type: 3}
 --- !u!1001 &929289145
 Prefab:
   m_ObjectHideFlags: 0
@@ -373,6 +441,62 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 1
+--- !u!1 &1496370802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1000011782185220, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 141767675}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1496370804}
+  - 114: {fileID: 1496370803}
+  m_Layer: 0
+  m_Name: MagmaManLair-NoCollision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1496370803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114000013545138958, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 141767675}
+  m_GameObject: {fileID: 1496370802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0619e460a775cc458d37cb4a214a189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Orientation: 0
+  StaggerAxis: 1
+  StaggerIndex: 0
+  HexSideLength: 0
+  NumLayers: 1
+  NumTilesWide: 16
+  NumTilesHigh: 14
+  TileWidth: 16
+  TileHeight: 16
+  ExportScale: 1
+  MapWidthInPixels: 256
+  MapHeightInPixels: 224
+--- !u!4 &1496370804
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4000013895733218, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
+  m_PrefabInternal: {fileID: 141767675}
+  m_GameObject: {fileID: 1496370802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1903048821}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1001 &1604145293
 Prefab:
@@ -450,6 +574,7 @@ MonoBehaviour:
   - custom-import
   - animation
   - collision-layers
+  - object-types
 --- !u!4 &1700727085
 Transform:
   m_ObjectHideFlags: 0
@@ -463,148 +588,35 @@ Transform:
   m_Children:
   - {fileID: 453395343}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
---- !u!1 &1719773056
+  m_RootOrder: 2
+--- !u!1 &1903048820
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 141358, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c, type: 2}
+  m_PrefabParentObject: {fileID: 1000011176621634, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+    type: 2}
   m_PrefabInternal: {fileID: 141767675}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1719773057}
-  - 33: {fileID: 1719773061}
-  - 23: {fileID: 1719773060}
-  - 114: {fileID: 1719773059}
-  - 114: {fileID: 1719773058}
+  - 4: {fileID: 1903048821}
   m_Layer: 0
-  m_Name: MagmaManTileset
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1719773057
+--- !u!4 &1903048821
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 473026, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c, type: 2}
-  m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 1719773056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 763336431}
-  m_RootOrder: 0
---- !u!114 &1719773058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11436464, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
+  m_PrefabParentObject: {fileID: 4000014197001354, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
     type: 2}
   m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 1719773056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74efee4889073914b8ae070d65688ce4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitialOpacity: 1
---- !u!114 &1719773059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11474144, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
-    type: 2}
-  m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 1719773056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1874989c5e2da094ea00112c6a895694, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!23 &1719773060
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2390778, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
-    type: 2}
-  m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 1719773056}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a651050930547ba4ab78168b89eb2d65, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!33 &1719773061
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3301748, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
-    type: 2}
-  m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 1719773056}
-  m_Mesh: {fileID: 4300008, guid: 344633869b0c5364086eb054f2f5d7e1, type: 3}
---- !u!1 &1900510070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100004, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c, type: 2}
-  m_PrefabInternal: {fileID: 141767675}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1900510071}
-  - 114: {fileID: 1900510072}
-  m_Layer: 0
-  m_Name: MagmaManLair-NoCollision
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1900510071
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400004, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c, type: 2}
-  m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 1900510070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 1903048820}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 763336431}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
---- !u!114 &1900510072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11439868, guid: 5a486f2f31e3b0c4bbc922a5e7de0c2c,
-    type: 2}
-  m_PrefabInternal: {fileID: 141767675}
-  m_GameObject: {fileID: 1900510070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0619e460a775cc458d37cb4a214a189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NumTilesWide: 16
-  NumTilesHigh: 14
-  TileWidth: 16
-  TileHeight: 16
-  ExportScale: 1
-  MapWidthInPixels: 256
-  MapHeightInPixels: 224
+  - {fileID: 627149155}
+  m_Father: {fileID: 1496370804}
+  m_RootOrder: 0

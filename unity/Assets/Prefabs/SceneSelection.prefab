@@ -108,6 +108,7 @@ MonoBehaviour:
   - custom-import
   - animation
   - collision-layers
+  - object-types
 --- !u!132 &13200000
 GUIText:
   m_ObjectHideFlags: 1

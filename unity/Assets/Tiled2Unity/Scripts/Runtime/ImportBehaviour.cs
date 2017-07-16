@@ -3,8 +3,10 @@
 using System;
 
 #if UNITY_EDITOR
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 
 using UnityEditor;
@@ -19,88 +21,189 @@ namespace Tiled2Unity
     // This is a *temporary* behaviour we add to the hierarchy only while importing. It should not be around for runtime.
     public class ImportBehaviour : MonoBehaviour
     {
-        public string ImportName;
+        public string Tiled2UnityXmlPath = "";
+        public string ExporterTiled2UnityVersion = "tiled2unity.version.not.set";
 
-        // This isn't supposed to exist outside the editor
 #if UNITY_EDITOR
-        public XDocument XmlDocument { get; private set; }
 
-        private int importCounter = 0;
-        private int numberOfElements = 0;
+        public readonly string ImportExtension = ".tiled2unity.xml";
 
-        public static string GetFilenameWithoutTiled2UnityExtension(string filename)
+        public string MapName
         {
-            // Chomp ".tiled2unity.xml" from the end of the file (if it exists) so that we get the proper of the file
-            // (Note that Path.GetFileNameWithoutExtension will not work because file name can have extra '.' characters)
-            string extension = ".tiled2unity.xml";
-            if (filename.EndsWith(extension, StringComparison.InvariantCultureIgnoreCase))
+            get
             {
-                filename = filename.Substring(0, filename.Length - extension.Length);
+                // tiled2unity.xml is two extensions
+                string name = Path.GetFileNameWithoutExtension(this.Tiled2UnityXmlPath);
+                name = Path.GetFileNameWithoutExtension(name);
+                return name;
             }
-
-            return Path.GetFileName(filename);
         }
 
-        // We have many independent requests on the ImportBehaviour so we can't take for granted it has been created yet.
-        // However, if it has been created then use it.
-        public static ImportBehaviour FindOrCreateImportBehaviour(string xmlPath)
-        {
-            string importName = ImportBehaviour.GetFilenameWithoutTiled2UnityExtension(xmlPath);
+        // List of asset names we are waiting on to be imported. This helps us keep import process in order, especially if user re-imports their whole project.
+        public List<string> ImportWait_Textures = new List<string>();
+        public List<string> ImportWait_Materials = new List<string>();
+        public List<string> ImportWait_Meshes = new List<string>();
+        public List<string> ImportWait_Prefabs = new List<string>();
 
-            // Try to find
-            foreach (var status in UnityEngine.Object.FindObjectsOfType<ImportBehaviour>())
+        // List of asset names that have been imported
+        public List<string> ImportComplete_Textures = new List<string>();
+        public List<string> ImportComplete_Materials = new List<string>();
+        public List<string> ImportComplete_Meshes = new List<string>();
+        public List<string> ImportComplete_Prefabs = new List<string>();
+
+        // List of all assets paths we are importing
+        public List<string> ImportingAssets = new List<string>();
+
+        public XDocument XmlDocument = null;
+
+        // List of warnings and errors collected over the import process
+        private List<string> ImportWarnings = new List<string>();
+        private List<string> ImportErrors = new List<string>();
+
+        // The same texture may be imported by multiple import behaviours
+        public static IEnumerable<ImportBehaviour> EnumerateImportBehaviors_ByWaitingTexture(string assetName)
+        {
+            foreach (var component in GameObject.FindObjectsOfType<Tiled2Unity.ImportBehaviour>())
             {
-                if (String.Compare(status.ImportName, importName, true) == 0)
+                if (component.ImportWait_Textures.Contains(assetName, StringComparer.OrdinalIgnoreCase))
                 {
-                    return status;
+                    yield return component;
+                }
+            }
+        }
+
+        // The same material may be imported by multiple import behaviours
+        public static IEnumerable<ImportBehaviour> EnumerateImportBehaviors_ByWaitingMaterial(string assetName)
+        {
+            foreach (var component in GameObject.FindObjectsOfType<Tiled2Unity.ImportBehaviour>())
+            {
+                if (component.ImportWait_Materials.Contains(assetName, StringComparer.OrdinalIgnoreCase))
+                {
+                    yield return component;
+                }
+            }
+        }
+
+        // Meshes are guarenteed to be unique
+        public static ImportBehaviour FindImportBehavior_ByWaitingMesh(string assetName)
+        {
+            foreach (var component in GameObject.FindObjectsOfType<Tiled2Unity.ImportBehaviour>())
+            {
+                if (component.ImportWait_Meshes.Contains(assetName, StringComparer.OrdinalIgnoreCase))
+                {
+                    return component;
                 }
             }
 
-            // Couldn't find, so create.
-            GameObject gameObject = new GameObject("__temp_tiled2unity_import");
-#if !UNITY_4_0 && !UNITY_4_0_1 && !UNITY_4_2 && !UNITY_4_3
-            gameObject.transform.SetAsFirstSibling();
-#endif
-
-            var importStatus = gameObject.AddComponent<ImportBehaviour>();
-            importStatus.ImportName = importName;
-
-            // Opening the XDocument itself can be expensive so start the progress bar just before we start
-            importStatus.StartProgressBar(xmlPath);
-            importStatus.XmlDocument = XDocument.Load(xmlPath);
-
-            importStatus.numberOfElements = importStatus.XmlDocument.Element("Tiled2Unity").Elements().Count();
-            importStatus.IncrementProgressBar(xmlPath);
-
-            return importStatus;
+            return null;
         }
 
-        private void StartProgressBar(string xmlPath)
+        // Prefabs are unique
+        public static ImportBehaviour FindImportBehavior_ByWaitingPrefab(string assetName)
         {
-            string title = string.Format("Tiled2Unity Import ({0})", this.ImportName);
-            UnityEditor.EditorUtility.DisplayProgressBar(title, xmlPath, 0);
+            foreach (var component in GameObject.FindObjectsOfType<Tiled2Unity.ImportBehaviour>())
+            {
+                if (component.ImportWait_Prefabs.Contains(assetName, StringComparer.OrdinalIgnoreCase))
+                {
+                    return component;
+                }
+            }
+
+            return null;
         }
 
-        public void IncrementProgressBar(string detail)
+        public static bool IsAssetBeingImportedByTiled2Unity(string assetPath)
         {
-            string title = string.Format("Tiled2Unity Import ({0})", this.ImportName);
+            foreach (var component in GameObject.FindObjectsOfType<Tiled2Unity.ImportBehaviour>())
+            {
+                if (component.ImportingAssets.Contains(assetPath, StringComparer.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
 
-            float progress = this.importCounter / (float)this.numberOfElements;
-            UnityEditor.EditorUtility.DisplayProgressBar(title, detail, progress);
-            this.importCounter++;
+            return false;
+        }
+
+        public bool IsTextureImportingCompleted()
+        {
+            return this.ImportComplete_Textures.Count == this.ImportWait_Textures.Count;
+        }
+
+        public bool IsMaterialImportingCompleted()
+        {
+            return this.ImportComplete_Materials.Count == this.ImportWait_Materials.Count;
+        }
+
+        public bool IsMeshImportingCompleted()
+        {
+            return this.ImportComplete_Meshes.Count == this.ImportWait_Meshes.Count;
+        }
+
+        public bool IsPrefabImportingCompleted()
+        {
+            return this.ImportComplete_Prefabs.Count == this.ImportWait_Prefabs.Count;
+        }
+
+        public void ImportTiled2UnityAsset(string assetPath)
+        {
+            if (!this.ImportingAssets.Contains(assetPath, StringComparer.OrdinalIgnoreCase))
+            {
+                this.ImportingAssets.Add(assetPath);
+                AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceSynchronousImport);
+            }
         }
 
         public void DestroyImportBehaviour()
         {
-            UnityEditor.EditorUtility.ClearProgressBar();
             UnityEngine.Object.DestroyImmediate(this.gameObject);
         }
+
+        public void RecordWarning(string fmt, params object[] args)
+        {
+            string warning = String.Format(fmt, args);
+            Debug.LogWarning(warning);
+            this.ImportWarnings.Add(warning);
+        }
+
+        public void RecordError(string fmt, params object[] args)
+        {
+            string error = String.Format(fmt, args);
+            Debug.LogError(error);
+            this.ImportErrors.Add(error);
+        }
+
+        public void ReportPrefabImport(string prefabPath)
+        {
+            // Report any warnings or errors
+            Action<object> func = Debug.Log;
+            if (this.ImportWarnings.Count > 0)
+                func = Debug.LogWarning;
+            if (this.ImportErrors.Count > 0)
+                func = Debug.LogError;
+
+            StringBuilder msg = new StringBuilder();
+            msg.AppendFormat("Imported prefab '{0}' from '{1}' with {2} warnings and {3} errors.\n", prefabPath, this.Tiled2UnityXmlPath, this.ImportWarnings.Count, this.ImportErrors.Count);
+
+            foreach (string error in this.ImportErrors)
+            {
+                msg.AppendLine(error);
+            }
+
+            foreach (string warning in this.ImportWarnings)
+            {
+                msg.AppendLine(warning);
+            }
+
+            func(msg.ToString());
+        }
+
 #endif
 
         // In case this behaviour leaks out of an import and into the runtime, complain.
         private void Update()
         {
-            Debug.LogError(String.Format("ImportBehaviour {0} left in scene after importing. Check if import was successful and remove this object from scene {1}", this.ImportName, this.gameObject.name));
+            Debug.LogError(String.Format("ImportBehaviour based on '{0}' left in scene after importing. Check if import was successful and remove this object from scene {1}", this.Tiled2UnityXmlPath, this.gameObject.name));
         }
 
     }

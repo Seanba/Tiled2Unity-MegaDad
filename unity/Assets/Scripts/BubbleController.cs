@@ -39,7 +39,7 @@ class BubbleController : MonoBehaviour
     {
         // We're checking for the player to be in water
         // Once he is, then our bubble is in water too and ready to go
-        Transform playerMouth = GameObject.FindGameObjectWithTag("Player").transform.FindChild("Animator/Mouth");
+        Transform playerMouth = GameObject.FindGameObjectWithTag("Player").transform.Find("Animator/Mouth");
         this.isBubbleInWater = Physics2D.OverlapPoint(playerMouth.position, 1 << LayerMask.NameToLayer("Water"));
 
         if (this.isBubbleInWater)
